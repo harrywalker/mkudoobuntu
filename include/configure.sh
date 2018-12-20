@@ -179,4 +179,12 @@ fi
 install -m 755 patches/10-help-text "$ROOTFS/etc/update-motd.d/10-help-text"
 chroot "$ROOTFS/" /bin/bash -c "run-parts /etc/update-motd.d/"
 
+# set origin soft ap configuration
+sed -i 's/UDOO hotspot/INPER-B1-FFFF/' "$ROOTFS/etc/hostapd/hostapd.conf"
+sed -i 's/udooboard/inper.com/' "$ROOTFS/etc/hostapd/hostapd.conf"
+sed -i '$a\max_num_sta=1' "$ROOTFS/etc/hostapd/hostapd.conf"
+
+sed -i 's/#DAEMON_CONF=""/DAEMON_CONF="\/etc\/hostapd\/hostapd.conf"/' "$ROOTFS/etc/default/hostapd"
+
+
 umountroot

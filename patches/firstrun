@@ -52,6 +52,11 @@ regenerate_ssh_keys(){
   service ssh start
 }
 
+rename_ssid(){
+  rand=`openssl rand -hex 2 | tr '[a-f]' '[A-F]'`
+  sed -i 's/FFFF/'${rand}'/' /etc/hostapd/hostapd.conf
+}
+
 on_background(){
   sleep 10
   regenerate_ssh_keys
@@ -72,6 +77,8 @@ case "$1" in
       echo "Expanding rootfs has failed, see log files. Error code: $?" 
     fi
 
+    rename_ssid
+    
     on_background &
     
     if `rm /etc/init/lightdm.override 2>/dev/null`

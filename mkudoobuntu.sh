@@ -51,7 +51,7 @@ BASE_PACKAGES+=( firmware-imx-9t fsl-alsa-plugins-9t imx-lib-9t imx-udev-fsl-rul
   imx-vpu-9t libfslcodec-9t libfslparser-9t libfslvpuwrap-9t hostapd dtweb )
 
 #dev library
-BASE_PACKAGES+=( python-serial librxtx-java )
+BASE_PACKAGES+=( python-serial librxtx-java cmake )
 
 DESKTOP_PACKAGES=( evince transmission-gtk abiword file-roller libmtp-runtime 
   scratch eog geany bluefish pavucontrol udoo-artwork xinput-calibrator x11vnc
